@@ -23,7 +23,7 @@
               <span class="search-form__label-text visually-hidden">Город</span>
               <input
                 type="text"
-                placeholder="Санкт Петербург, например"
+                placeholder="Ввод названия города"
                 name="city"
                 class="search-form__textfield"
               />
@@ -64,9 +64,14 @@
               </label>
             </div>
           </fieldset>
-          <button type="submit" class="button search-form__submit-button">
+          <div class="submit_button-border"> <!-- пришлось обернуть так как сделать обводку при focus по другому никак -->
+            <button type="submit" class="button search-form__submit-button">
+              Найти
+            </button>
+          </div>
+          <!-- <button type="submit" class="button search-form__submit-button">
             Найти
-          </button>
+          </button> -->
         </form>
       </section>
       <section class="content__details">
@@ -106,7 +111,10 @@
       </li>
     </template>
     <template class="more-button-template">
-      <li><button class="button more-button">Показать еще</button></li>
+      <div class="more_button-border"> <!-- пришлось обернуть так как сделать обводку при focus по другому никак -->
+        <li><button class="button more-button">Показать еще</button></li>
+      </div>
+      <!-- <li><button class="button more-button">Показать еще</button></li> -->
     </template>
 
     <template class="error-template">
