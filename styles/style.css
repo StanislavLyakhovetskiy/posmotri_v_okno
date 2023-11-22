@@ -65,19 +65,25 @@ ol {
 .result__video-container {
   /*border: 3px solid #3cde5a; /* для визуальной верстки */
   position: relative;
+  width: 711px;
+  height: 386px;
 }
 
 .result__video {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-form {
-  display: grid; /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
-  grid-template-columns: repeat(3, 1fr); /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
+  /*display: grid; /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
+  /*grid-template-columns: repeat(3, 1fr); /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
   gap: 40px; /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
-  justify-content: start; /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
+  /*justify-content: start; /* Расположить элементы .search-form в строку и пропорционально распределить между ними свободное пространство, прижать их к началу контейнера. */
   /*border: 3px solid #de7d3c; /* для визуальной верстки */
+  display: flex;
+  justify-content: space-between;
 }
 
 .search-form__fieldset {
@@ -91,7 +97,7 @@ ol {
 .search-form__fieldset-title {
   /*border: 3px solid #de623c; /* для визуальной верстки */
   color: #FFF;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -100,7 +106,7 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 5px;
+  gap: 15px;
 }
 
 .search-form__label {
@@ -114,21 +120,46 @@ ol {
   text-decoration: underline;
 }
 
+.search-form__label:has(:focus) {
+  outline: none;
+}
+
 .search-form__label:has(:focus-visible) {
-  border: 1px solid #fff;
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.search-form__label:has(:active) {
+  outline: none;
 }
 
 .search-form__pseudo-checkbox {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 19px;
   height: 19px;
   background-color: #1b1919;
   border: 1px solid #FFF;
 }
 
+.search-form__pseudo-checkbox:active {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+}
+
 .search-form__label-text {
   color: #FFF;
-  font-family: Fira Sans Condensed;
+  font-family: inherit;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -138,8 +169,8 @@ ol {
 
 .search-form__textfield {
   background-color: #1b1919;
-  color: rgba(255, 255, 255, 0.70);
-  font-family: Fira Sans Condensed;
+  color: #fff;
+  font-family: inherit;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -150,6 +181,12 @@ ol {
   border-bottom: 1px solid #fff;
   border-left: none;
   margin: 1px;
+  width: 225px;
+  height: 27px;
+}
+
+.search-form__textfield:focus {
+  outline: none;
 }
 
 .search-form__textfield:active {
@@ -157,8 +194,8 @@ ol {
   border-left: 1px solid #fff;
 }
 
-.search-form__textfield:focus {
-  outline: none;
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.70);
 }
 
 .visually-hidden {
@@ -172,14 +209,15 @@ ol {
 }
 
 .submit_button-border { /* обернул в div кнопку, чтобы при действии focus обвести дополнительной границей */
-  margin-top: 20px;
+  margin-block-start: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .submit_button-border:has(:focus-visible) {
-  border: 1px solid #fff;
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
 
 .button {
@@ -191,7 +229,7 @@ ol {
 .search-form__submit-button {
   color: #FFF;
   text-align: center;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -201,16 +239,16 @@ ol {
   height: 34px;
 }
 
-.search-form__submit-button:hover {
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
   text-decoration: underline;
 }
 
-.search-form__submit-button:active {
+.button:active {
   background: #545050;
-}
-
-.search-form__submit-button:focus {
-  outline: none;
 }
 
 /* Раздел со списком роликов */
@@ -241,19 +279,20 @@ ol {
 
 .content__list {
   display: flex;
-  width: 399px;
+  /*width: 399px;*/
   height: 298px; /* Установить вертикальный размер для .content__list и добавить скролл при переполнении. */
   flex-direction: column;
   align-items: flex-start;
   gap: 30px;
   /*border: 3px solid #5c3cde; /* для визуальной верстки */
-  overflow: scroll; /* Установить вертикальный размер для .content__list и добавить скролл при переполнении. */
+  overflow: auto; /* Установить вертикальный размер для .content__list и добавить скролл при переполнении. */
   position: relative;
 }
 
 .content__card-link {
   text-decoration: none;
   display: block;
+  margin: 2px;
 }
 
 .content__card-link:hover .content__video-card-description-container {
@@ -263,7 +302,10 @@ ol {
 
 .content__card-link:focus {
   outline: none;
-  border: 1px solid #fff;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
 }
 
 .content__card-link_current {
@@ -286,7 +328,7 @@ ol {
 
 .content__video-card-title {
   color: #FFF;
-  font-family: Oswald;
+  font-family: 'Oswald', sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -296,7 +338,7 @@ ol {
 
 .content__video-card-description {
   color: #FFF;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -306,14 +348,16 @@ ol {
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
+  /*background-size: cover;
+  background-position: center;*/
 }
 
 .more-button {
   color: #FFF;
   text-align: center;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -323,18 +367,6 @@ ol {
   margin: 1px;
 }
 
-.more-button:hover {
-  text-decoration: underline;
-}
-
-.more-button:active {
-  background: #545050;
-}
-
-.more-button:focus {
-  outline: none;
-}
-
 .more_button-border { /* обернул в div кнопку, чтобы при действии focus обвести дополнительной границей */
   display: flex;
   justify-content: center;
@@ -342,5 +374,6 @@ ol {
 }
 
 .more_button-border:has(:focus-visible) {
-  border: 1px solid #fff;
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
