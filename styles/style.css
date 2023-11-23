@@ -59,7 +59,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  /*border: 3px solid #563cde; /* для визуальной верстки */
+  /*border: 1px solid #fff; /* для визуальной верстки */
 }
 
 .result__video-container {
@@ -114,6 +114,7 @@ ol {
   gap: 5px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .search-form__label:hover .search-form__label-text {
@@ -141,12 +142,6 @@ ol {
   height: 19px;
   background-color: #1b1919;
   border: 1px solid #FFF;
-}
-
-.search-form__pseudo-checkbox:active {
-  width: 15px;
-  height: 15px;
-  background-color: #fff;
 }
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
@@ -226,6 +221,22 @@ ol {
   cursor: pointer;
 }
 
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background: #545050;
+}
+
 .search-form__submit-button {
   color: #FFF;
   text-align: center;
@@ -239,18 +250,6 @@ ol {
   height: 34px;
 }
 
-.button:focus {
-  outline: none;
-}
-
-.button:hover {
-  text-decoration: underline;
-}
-
-.button:active {
-  background: #545050;
-}
-
 /* Раздел со списком роликов */
 
 .content__details {
@@ -258,7 +257,7 @@ ol {
   flex-direction: column;
   align-items: flex-start;
   gap: 26px; /* Растянуть .content__details во всю доступную ширину и высоту контейнера и добавить отступы между заголовком и зоной с карточками. */
-  /*border: 3px solid #3cd9de; /* для визуальной верстки */
+  /*border: 1px solid #fff; /* для визуальной верстки */
   width: 399px; /* Растянуть .content__details во всю доступную ширину и высоту контейнера и добавить отступы между заголовком и зоной с карточками. */
   /*height: 100%; /* Растянуть .content__details во всю доступную ширину и высоту контейнера и добавить отступы между заголовком и зоной с карточками. */
 }
